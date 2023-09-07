@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
@@ -7,13 +8,12 @@ import { Routes } from './src/routes';
 
 import { THEME } from './src/theme';
 import { Loading } from './src/components/Loading';
+import { tagUserEmailCreate } from './src/notifications/notificationTags';
 
 import { CartContextProvider } from './src/contexts/CartContext';
 
 const oneSignalAppId = Platform.OS === 'ios' ? "IOS_APP_ID" : "ANDROID_APP_ID";
 OneSignal.setAppId(oneSignalAppId);
-
-OneSignal.setEmail('markusuuuu@gmail.com');
 
 OneSignal.promptForPushNotificationsWithUserResponse(response => {
   console.log(response);
@@ -22,10 +22,14 @@ OneSignal.promptForPushNotificationsWithUserResponse(response => {
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 
+  useEffect(() => {
+    tagUserEmailCreate('markusuuuu@gmail.com');
+  }, [])
+
   return (
     <NativeBaseProvider theme={THEME}>
       <StatusBar
-        barStyle="light-content"
+      barStyle="light-content"
         backgroundColor="transparent"
         translucent
       />
