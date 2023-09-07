@@ -13,6 +13,8 @@ import { CartContextProvider } from './src/contexts/CartContext';
 const oneSignalAppId = Platform.OS === 'ios' ? "IOS_APP_ID" : "ANDROID_APP_ID";
 OneSignal.setAppId(oneSignalAppId);
 
+OneSignal.setEmail('markusuuuu@gmail.com');
+
 OneSignal.promptForPushNotificationsWithUserResponse(response => {
   console.log(response);
 })
