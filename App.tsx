@@ -8,7 +8,7 @@ import { Routes } from './src/routes';
 
 import { THEME } from './src/theme';
 import { Loading } from './src/components/Loading';
-import { tagUserEmailCreate } from './src/notifications/notificationTags';
+import { tagUserInfoCreate } from './src/notifications/notificationTags';
 
 import { CartContextProvider } from './src/contexts/CartContext';
 
@@ -23,7 +23,7 @@ export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 
   useEffect(() => {
-    tagUserEmailCreate('markusuuuu@gmail.com');
+    tagUserInfoCreate();
   }, [])
 
   return (
